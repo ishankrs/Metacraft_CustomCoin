@@ -1,16 +1,69 @@
-# This simple project  is my subbmission for solidity assement 
-This contract allows minting and burning of tokens, keeping track of balances associated with addresses. 
+# Solidity Assessment Submission
 
-It includes the following features:
+This simple project is my submission for the Solidity assessment. The contract allows minting and burning of tokens, keeping track of balances associated with addresses.
 
-Public variables(assesment requirements) to store token details such as name, abbreviation, and total supply.
-A mapping to track balances of different addresses.
-Functions to mint and burn tokens, updating the total supply and balances accordingly.
+## Features
 
+The contract includes the following features:
 
-The project and the contract both use MIT licences.
+- **Public Variables:** Store token details such as name, abbreviation, and total supply.
+- **Mapping:** Track balances of different addresses.
+- **Mint and Burn Functions:** Update the total supply and balances accordingly.
 
+## License
 
-To execute this program, simply  go to https://remix.ethereum.org/  , import the files and then u can compile and use the program.
+The project and the contract both use the MIT license.
 
-#Created by : Ishan kashyap 
+## Getting Started
+
+### Executing the Program
+
+To execute this program, follow these steps:
+
+1. Go to [Remix](https://remix.ethereum.org/).
+2. Create a new file with a `.sol` extension (e.g., `MyToken.sol`).
+3. Copy and paste the following code into the file:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract MyToken {
+    // Public variables
+    string public Mytoken = "Shibaishu";
+    string public MyTokAbb = "ISHU";
+    uint public TotalSupply = 0;
+
+    // Mapping to track balances
+    mapping(address => uint) public TotalBal;
+
+    // Mint function
+    function MintF(address _address, uint _value) public {
+        TotalSupply += _value;
+        TotalBal[_address] += _value;
+    }
+
+    // Burn function
+    function BurnF(address _address, uint _value) public {
+        require(TotalBal[_address] >= _value, "Insufficient balance to burn");
+        TotalSupply -= _value;
+        TotalBal[_address] -= _value;
+    }
+}
+```
+
+4. Compile the contract by clicking on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to `0.8.18` (or another compatible version), and then click on the "Compile MyToken.sol" button.
+5. Deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the `MyToken` contract from the dropdown menu, and then click on the "Deploy" button.
+
+### Interacting with the Contract
+
+- **Mint Tokens:** Use the `MintF` function to mint new tokens. Provide the address and the amount of tokens to mint.
+- **Burn Tokens:** Use the `BurnF` function to burn tokens. Provide the address and the amount of tokens to burn. Ensure the address has a sufficient balance to burn the specified amount.
+
+## Author
+
+Created by: Ishan Kashyap
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
