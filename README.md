@@ -4,7 +4,7 @@ This simple project is my submission for the Solidity assessment. The contract a
 
 ## Features
 
-The contract includes the following features:
+The contract includes the following :
 
 - **Public Variables:** Store token details such as name, abbreviation, and total supply.
 - **Mapping:** Track balances of different addresses.
